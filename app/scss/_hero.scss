@@ -1,0 +1,85 @@
+.hero{
+    background-color: $veryLightGray;
+    .container{
+        @include breakpoint-up(large){
+            display: flex;
+            align-items: center;
+        }
+    }
+    &__image{
+        position: relative;
+        background-image: url('/images/bg-intro-mobile.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        min-height: 17.5rem;
+        @include breakpoint-up(medium){
+            min-height: 25rem;
+            background-position: center 50%;
+        }
+        @include breakpoint-up(large){
+            flex: 3;
+            order: 2;
+            height: 41rem;
+            background-image: none;
+            // background-image: url('/EasyBank_landing_page/images/bg-intro-desktop.svg');
+            //background-position: left center;
+        }
+
+        &::before{
+            // z-index: 6;
+            content:"";
+            position: absolute;
+            height: 100%;
+            width:100%;
+            background-image: url('/images/bg-intro-desktop.svg');
+            background-size: 93%;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            @include breakpoint-up(medium){
+                background-image: none;
+            }
+            
+            @include breakpoint-up(large){
+                background-image: url('/images/bg-intro-desktop.svg');
+                width:150%;
+                background-size: 129%;
+                background-position: 0 83%;
+                
+            }
+        }
+        &::after{
+            // z-index: 7;
+            content:"";
+            position: absolute;
+            height: 100%;
+            width:100%;
+            background-image: url('/images/image-mockups.png');
+            background-size: 93%;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            // left: 50%;
+            // transform: translateX(-50%);
+            @include breakpoint-up(medium){
+                background-size: 52%;
+            }
+            @include breakpoint-up(large){
+                height: 122%;
+                width: 120%;
+                background-size: 94%;
+                background-position: center 150%;
+                left: 22%;
+            }
+        }
+    }
+
+    &__text{
+        text-align: center;
+        @include breakpoint-up(large){
+            flex: 2;
+            order: 1;
+            text-align: left;
+        }
+    }
+   
+}
