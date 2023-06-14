@@ -1,0 +1,77 @@
+@use '../util' as *;
+
+.toggle{
+    display: grid;
+    grid-template-columns:1fr 3rem;
+    // grid-template-rows: repeat(2,1fr);
+    border: none;
+    gap: rem(4.8) rem(8);
+    label{
+        font-size: rem(18);
+        color: var(--toggle);
+        &[for="dark"]{
+            // grid-column: 1/2;
+            // justify-self: end;
+            // align-self: center;
+            line-height: rem(24);
+        }
+        // &[for="system"]{
+        //     grid-column: 1/4 ;
+        //     grid-row: 2/3;
+        //     justify-self: center;
+        //     align-self: start;
+        // }
+        // &[for="light"]{
+        //     grid-column: 3/4;
+        //     align-self: center;
+        // }
+        // grid-column: 1/2;
+    }
+    &__wrapper{
+        height:rem(24);
+        grid-column: 2/3;
+        // grid-row: 1/2;
+        position: relative;
+    }
+    input[type="radio"]{
+        margin: 0 rem(-2) 0 rem(-2);
+        opacity: 0;
+        width: rem(24);
+        height: rem(24);
+        &:focus ~ .toggle__button{
+            border: 2px solid white;
+        }
+    }
+    &__background{
+        display:block;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        border-radius: rem(12);
+        background: var(--button-bg);
+        pointer-events: none;
+    }
+
+    &__button{
+        position: absolute;
+        left: rem(3);
+        top: rem(3);
+        right: 100%;
+        width: rem(18);
+        height: rem(18);
+        border-radius: 50%;
+        background-color: var(--button);
+
+        transition: all 150ms ease-in-out;
+    }
+    #light:checked ~ .toggle__button{
+        left: calc(100% - 21px);
+        right: 3px;
+    }
+    #system:checked ~ .toggle__button{
+        left: 50%;
+        right: auto;
+        transform: translate(-50%);
+    }
+}
